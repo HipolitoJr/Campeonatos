@@ -2,8 +2,10 @@ package com.example.hipolito.campeonatos
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.widget.Adapter
 import android.widget.ArrayAdapter
+import com.example.hipolito.campeonatos.adapters.CampeonatosRVAdapter
 import com.example.hipolito.campeonatos.api.APIService
 import com.example.hipolito.campeonatos.models.LigasAPIModel
 import kotlinx.android.synthetic.main.activity_ligas.*
@@ -49,8 +51,16 @@ class LigasActivity : AppCompatActivity() {
 
     private fun setListaLigas() {
 
-        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listLigas)
-        listaCampeonatos.adapter = adapter
+        val campeonatosRVAdapter = CampeonatosRVAdapter(this, this!!.listLigas!!)
+
+        rvListaCampeonatos.adapter = campeonatosRVAdapter
+
+        val gridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+
+        rvListaCampeonatos.setHasFixedSize(true)
+        rvListaCampeonatos.layoutManager = gridLayoutManager
+
+        //var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listLigas)
 
     }
 
