@@ -1,6 +1,6 @@
 package com.example.hipolito.campeonatos.api.endpoints
 
-import com.example.hipolito.campeonatos.models.LigasAPIModel
+import com.example.hipolito.campeonatos.models.LigaAPIModel
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -10,6 +10,6 @@ import retrofit2.http.GET
 interface CompeticoesEndPoint {
 
     @GET("v1/competitions/")
-    fun getLigas(): Call<MutableList<LigasAPIModel>>
+    fun getLigas(): Call<MutableList<LigaAPIModel>>
 
 }

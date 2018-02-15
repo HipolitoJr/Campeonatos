@@ -18,7 +18,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/txtItemLigaImagem"
+            android:id="@+id/ivItemLigaImagem"
             android:src="@drawable/icon_liga"
             android:padding="6dp"
             android:background="#6d6"
@@ -28,9 +28,7 @@
         <TextView
             android:id="@+id/txtItemLigaNome"
             android:padding="8dp"
-            android:textSize="17dp"
-            android:textStyle="bold"
-            android:gravity="center"
+            style="@style/TextoTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

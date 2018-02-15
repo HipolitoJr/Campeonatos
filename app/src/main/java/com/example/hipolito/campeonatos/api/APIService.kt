@@ -1,6 +1,7 @@
 package com.example.hipolito.campeonatos.api
 
 import com.example.hipolito.campeonatos.api.endpoints.CompeticoesEndPoint
+import com.example.hipolito.campeonatos.api.endpoints.TabelaLigaEndPoint
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,6 +17,7 @@ class APIService{
     var interceptorFootballAPI: InterceptorFootballAPI? = null
 
     var competicoesEndPoint: CompeticoesEndPoint? = null
+    var tabelaLigaEndPoint: TabelaLigaEndPoint? = null
 
     constructor(TOKEN: String){
 
@@ -33,5 +35,6 @@ class APIService{
                 .build()
 
         competicoesEndPoint = retrofit!!.create(CompeticoesEndPoint::class.java)
+        tabelaLigaEndPoint = retrofit!!.create(TabelaLigaEndPoint::class.java)
     }
 }

@@ -3,18 +3,16 @@ package com.example.hipolito.campeonatos
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
-import android.widget.Adapter
-import android.widget.ArrayAdapter
 import com.example.hipolito.campeonatos.adapters.CampeonatosRVAdapter
 import com.example.hipolito.campeonatos.api.APIService
-import com.example.hipolito.campeonatos.models.LigasAPIModel
+import com.example.hipolito.campeonatos.models.LigaAPIModel
 import kotlinx.android.synthetic.main.activity_ligas.*
 import retrofit2.Response
 
 class LigasActivity : AppCompatActivity() {
 
     var apiService: APIService? = null
-    var listLigas: MutableList<LigasAPIModel>? = null
+    var listLigas: MutableList<LigaAPIModel>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,30 +21,32 @@ class LigasActivity : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume()
-        getCompeticoes()
     }
 
     private fun setupViews() {
         apiService = APIService("")
-        listLigas = ArrayList<LigasAPIModel>()
+        listLigas = ArrayList<LigaAPIModel>() as MutableList<LigaAPIModel>?
+
+        getCompeticoes()
     }
 
 
     private fun getCompeticoes() {
         var call = apiService!!.competicoesEndPoint!!.getLigas()
 
-        call.enqueue(object : retrofit2.Callback<MutableList<LigasAPIModel>> {
-            override fun onFailure(call: retrofit2.Call<MutableList<LigasAPIModel>>?, t: Throwable?) {
+        call.enqueue(object : retrofit2.Callback<MutableList<LigaAPIModel>> {
+            override fun onFailure(call: retrofit2.Call<MutableList<LigaAPIModel>>?, t: Throwable?) {
 
             }
 
-            override fun onResponse(call: retrofit2.Call<MutableList<LigasAPIModel>>?, response: Response<MutableList<LigasAPIModel>>?) {
-                listLigas = response!!.body()
-                setListaLigas();
+            override fun onResponse(call: retrofit2.Call<MutableList<LigaAPIModel>>?, response: Response<MutableList<LigaAPIModel>>?) {
+                if (response!!.isSuccessful){
+                    listLigas = response!!.body()
+                    setIconsLigas()
+                    setListaLigas()
+                }
             }
-
         })
-
     }
 
     private fun setListaLigas() {
@@ -60,9 +60,22 @@ class LigasActivity : AppCompatActivity() {
         rvListaCampeonatos.setHasFixedSize(true)
         rvListaCampeonatos.layoutManager = gridLayoutManager
 
-        //var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listLigas)
-
     }
 
-
+    private fun setIconsLigas() {
+        for (liga in listLigas!!){
+            when(liga.id){
+                444 -> liga.logoLiga = R.drawable.icon_brasileirao
+                445 -> liga.logoLiga = R.drawable.icon_ingles
+                449 -> liga.logoLiga = R.drawable.icon_holandes
+                450 -> liga.logoLiga = R.drawable.icon_frances_1
+                451 -> liga.logoLiga = R.drawable.icon_frances_2
+                452 -> liga.logoLiga = R.drawable.icon_alemao_1
+                453 -> liga.logoLiga = R.drawable.icon_alemao_2
+                455 -> liga.logoLiga = R.drawable.icon_espanhol
+                456 -> liga.logoLiga = R.drawable.icon_italiano_1
+                459 -> liga.logoLiga = R.drawable.icon_italiano_2
+            }
+        }
+    }
 }
