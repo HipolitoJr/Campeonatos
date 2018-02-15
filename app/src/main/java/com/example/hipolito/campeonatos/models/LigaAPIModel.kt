@@ -16,8 +16,4 @@ class LigaAPIModel(
     override fun toString(): String {
         return nome
     }
-
-    fun setIconLiga(){
-
-    }
 }

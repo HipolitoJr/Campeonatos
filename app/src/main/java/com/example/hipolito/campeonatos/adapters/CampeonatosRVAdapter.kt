@@ -45,7 +45,7 @@ class CampeonatosRVAdapter(
 
         var liga = ligas.get(position)
 
-        holder!!.itemView.txtItemLigaNome.setText(liga.nome + " - " + liga.id)
+        holder!!.itemView.txtItemLigaNome.setText(liga.nome)
 
         if (liga.logoLiga != 0)
             holder.itemView.ivItemLigaImagem.setImageResource(liga.logoLiga)

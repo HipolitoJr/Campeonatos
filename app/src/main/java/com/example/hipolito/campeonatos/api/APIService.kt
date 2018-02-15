@@ -1,6 +1,7 @@
 package com.example.hipolito.campeonatos.api
 
 import com.example.hipolito.campeonatos.api.endpoints.CompeticoesEndPoint
+import com.example.hipolito.campeonatos.api.endpoints.PartidaEndPoint
 import com.example.hipolito.campeonatos.api.endpoints.TabelaLigaEndPoint
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -18,6 +19,7 @@ class APIService{
 
     var competicoesEndPoint: CompeticoesEndPoint? = null
     var tabelaLigaEndPoint: TabelaLigaEndPoint? = null
+    var partidaEndPoint: PartidaEndPoint? = null
 
     constructor(TOKEN: String){
 
@@ -36,5 +38,6 @@ class APIService{
 
         competicoesEndPoint = retrofit!!.create(CompeticoesEndPoint::class.java)
         tabelaLigaEndPoint = retrofit!!.create(TabelaLigaEndPoint::class.java)
+        partidaEndPoint = retrofit!!.create(PartidaEndPoint::class.java)
     }
 }

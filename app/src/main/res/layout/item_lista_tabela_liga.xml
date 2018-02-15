@@ -40,7 +40,6 @@
                 android:id="@+id/txtItemTabelaNome"
                 android:layout_gravity="center"
                 style="@style/TextoTitulo"
-                android:textColor="#ddd"
                 android:textSize="14dp"
                 android:layout_weight="4"
                 android:layout_width="0dp"
