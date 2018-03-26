@@ -1,6 +1,6 @@
 # Campeonatos
 
-* App listagem de campeonatos:
+* App listagem de campeonatos de Futebol:
     *   Rankings;
     *   Tabelas;
     *   Partidas;
